@@ -1,0 +1,18 @@
+{
+  "name": "zerogame",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Piksel — tarayıcı oyun portalı: Fastify backend + manifest tabanlı oyun kataloğu + global skor tablosu",
+  "type": "module",
+  "scripts": {
+    "dev:site": "npm --prefix frontend/app run dev",
+    "dev:server": "npm --prefix server run dev",
+    "dev:game": "npm --prefix Games/ZeroShoot run dev",
+    "build:site": "npm --prefix frontend/app run build",
+    "build:game": "npm --prefix Games/ZeroShoot run build",
+    "build": "npm run build:site && npm run build:game",
+    "start": "npm --prefix server run start",
+    "test": "npm --prefix server run test"
+  },
+  "license": "MIT"
+}

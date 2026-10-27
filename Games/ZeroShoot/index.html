@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#060214" />
+  <title>ZeroShoot — 3D Koşucu</title>
+</head>
+<body>
+  <div id="app"></div>
+  <div id="ui">
+    <div id="vignette"></div>
+
+    <!-- HUD -->
+    <div id="hud" class="screen hidden noflex">
+      <div id="hudTop">
+        <div id="hudLeft">
+          <div id="hearts">♥♥♥</div>
+          <div id="powerRow"></div>
+        </div>
+        <div id="hudCenter">
+          <div id="score">0</div>
+          <div id="dist">0 m</div>
+        </div>
+        <div id="hudRight">
+          <div id="coins">◉ 0</div>
+          <div id="speed">0 km/s</div>
+          <button id="btnPause" class="btn small">⏸</button>
+        </div>
+      </div>
+      <div id="bossBar" class="hidden">
+        <div id="bossLabel">◈ BOSS</div>
+        <div id="bossBarWrap"><div id="bossBarFill"></div></div>
+      </div>
+      <div id="hint" class="hidden">← → şerit &nbsp;•&nbsp; ↑/Boşluk zıpla &nbsp;•&nbsp; ↓ kay &nbsp;•&nbsp; Tık/F ateş</div>
+    </div>
+
+    <!-- Ana Menü -->
+    <div id="menu" class="screen">
+      <div class="title glitch" data-text="ZEROSHOOT">ZEROSHOOT</div>
+      <div class="subtitle">3D NEON SONSUZ KOŞUCU</div>
+      <div class="menuBtns">
+        <button id="btnPlay" class="btn big">▶ OYNA</button>
+        <button id="btnScores" class="btn">🏆 SKORLAR</button>
+        <button id="btnSettings" class="btn">⚙ AYARLAR</button>
+      </div>
+      <div class="hintBox">
+        Klavye: ← → şerit • ↑ zıpla • ↓ kay • <b>F</b> ateş<br>
+        Fare/Dokunmatik:fareyle yönlendir, <b>tık</b> ile ateş et, <b>kaydır</b>
+      </div>
+    </div>
+
+    <!-- Duraklat -->
+    <div id="pause" class="screen hidden">
+      <div class="title small">DURAKLATILDI</div>
+      <div class="menuBtns">
+        <button id="btnResume" class="btn big">▶ DEVAM</button>
+        <button id="btnRestart2" class="btn">⟳ YENİDEN</button>
+        <button id="btnMenu2" class="btn">☰ ANA MENÜ</button>
+      </div>
+    </div>
+
+    <!-- Oyun Bitti -->
+    <div id="gameover" class="screen hidden">
+      <div class="title small red">OYUN BİTTİ</div>
+      <div id="goStats"></div>
+      <div id="nameRow" class="hidden">
+        <input id="nameInput" maxlength="12" placeholder="Pilot adın..." />
+        <button id="btnSaveScore" class="btn">KAYDET</button>
+      </div>
+      <div id="saveStatus" class="saveStatus hidden"></div>
+      <div class="menuBtns">
+        <button id="btnRestart" class="btn big">⟳ TEKRAR OYNA</button>
+        <button id="btnMenu" class="btn">☰ ANA MENÜ</button>
+      </div>
+    </div>
+
+    <!-- Ayarlar -->
+    <div id="settings" class="screen hidden">
+      <div class="title small">AYARLAR</div>
+      <div class="setRow"><label>🔊 Ses</label><input id="setSound" type="range" min="0" max="100" step="5" /></div>
+      <div class="setRow"><label>🖱 Hassasiyet</label><input id="setSens" type="range" min="30" max="200" step="10" /></div>
+      <div class="setRow"><label>✨ Grafik</label>
+        <div class="seg">
+          <button data-q="low" class="btn small qbtn">DÜŞÜK</button>
+          <button data-q="med" class="btn small qbtn">ORTA</button>
+          <button data-q="high" class="btn small qbtn">YÜKSEK</button>
+        </div>
+      </div>
+      <div class="menuBtns"><button id="btnSettingsBack" class="btn big">GERİ</button></div>
+    </div>
+
+    <!-- Skorlar -->
+    <div id="scores" class="screen hidden">
+      <div class="title small">🏆 EN İYİLER</div>
+      <div class="scoreBox">
+        <div class="scoreHead">🌍 GENEL — TOP 10</div>
+        <div id="globalTable" class="scoreTableBlock"></div>
+      </div>
+      <div class="scoreBox">
+        <div class="scoreHead">💻 BU CİHAZ</div>
+        <div id="scoreTable"></div>
+      </div>
+      <div class="menuBtns"><button id="btnScoresBack" class="btn big">GERİ</button></div>
+    </div>
+
+    <div id="toast"></div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

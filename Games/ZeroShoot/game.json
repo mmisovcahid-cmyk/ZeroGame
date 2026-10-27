@@ -1,0 +1,12 @@
+{
+  "id": "zeroshoot",
+  "title": "ZeroShoot",
+  "category": "Aksiyon",
+  "description": "3D neon sonsuz koşucu + atış oyunu. Şerit değiştir, droneleri vur, her 1500 metrede BOSS'la kapış. Coin, kalkan, mıknatıs, hız patlaması ve çift puan topla; 3 biyomda hayatta kalmaya çalış.",
+  "controls": ["← → şerit", "↑ zıpla", "↓ kay", "F / Tık ateş", "ESC duraklat"],
+  "duration": "Sonsuz koşu",
+  "buildUrl": "/games/zeroshoot/",
+  "thumbnailUrl": "/games/zeroshoot/thumbnail.png",
+  "devPort": 5173,
+  "featured": true
+}

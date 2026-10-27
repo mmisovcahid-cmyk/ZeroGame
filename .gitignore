@@ -1,0 +1,19 @@
+# Bağımlılıklar
+node_modules/
+
+# Derleme çıktıları
+frontend/app/dist/
+Games/*/dist/
+server/dist/
+
+# Veritabanı
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+server/data/
+
+# Geliştirme / araç izleri
+.musepool/
+*.log
+.DS_Store
