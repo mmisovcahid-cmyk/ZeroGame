@@ -2,7 +2,7 @@
   "name": "zerogame",
   "private": true,
   "version": "0.1.0",
-  "description": "Piksel — tarayıcı oyun portalı: Fastify backend + manifest tabanlı oyun kataloğu + global skor tablosu",
+  "description": "ZeroGame — tarayıcı oyun portalı: Fastify backend + manifest tabanlı oyun kataloğu + global skor tablosu",
   "type": "module",
   "scripts": {
     "dev:site": "npm --prefix frontend/app run dev",

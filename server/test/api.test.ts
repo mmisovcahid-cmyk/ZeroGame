@@ -10,7 +10,7 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..'
 const gamesDir = path.join(repoRoot, 'Games')
 
 function makeApp() {
-  const dbPath = path.join(mkdtempSync(path.join(tmpdir(), 'piksel-test-')), 'test.db')
+  const dbPath = path.join(mkdtempSync(path.join(tmpdir(), 'zerogame-test-')), 'test.db')
   // siteDist: '' → testte statik site mount atlanır
   return buildServer({ dbPath, gamesDir, siteDist: '', logger: false })
 }
@@ -53,7 +53,7 @@ describe('scores API', () => {
     const app = await makeApp()
     const first = await app.inject({
       method: 'POST', url: '/api/games/zeroshoot/scores',
-      payload: { player: 'Pikselci', score: 5000, dist: 4200 },
+      payload: { player: 'Zeroci', score: 5000, dist: 4200 },
     })
     expect(first.statusCode).toBe(201)
     expect(first.json()).toMatchObject({ ok: true, rank: 1 })
@@ -68,7 +68,7 @@ describe('scores API', () => {
     expect(top.statusCode).toBe(200)
     const rows = top.json()
     expect(rows).toHaveLength(2)
-    expect(rows[0]).toMatchObject({ player: 'Pikselci', score: 5000 })
+    expect(rows[0]).toMatchObject({ player: 'Zeroci', score: 5000 })
     expect(rows[1]).toMatchObject({ player: 'Rakip', score: 1500 })
     await app.close()
   })

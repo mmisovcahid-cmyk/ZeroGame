@@ -1,4 +1,4 @@
-// Piksel portalı global skor API istemcisi.
+// ZeroGame portalı global skor API istemcisi.
 // Portal içinde iframe ile ya da aynı sunucu üzerinde çalıştığı için
 // göreceli adresler kullanılır; geliştirme ortamında vite proxy'i devreye girer.
 const GAME_ID = 'zeroshoot';

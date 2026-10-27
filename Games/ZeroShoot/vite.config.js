@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 
-// Piksel portalının altında /games/zeroshoot/ olarak çalışması için base ayarı
+// ZeroGame portalının altında /games/zeroshoot/ olarak çalışması için base ayarı
 export default defineConfig({
   base: '/games/zeroshoot/',
   server: {
@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5173,
     strictPort: true,  // port meşgulse hata ver (adres sabit kalsın)
     proxy: {
-      // Piksel backend'e (Fastify, 3001) skorsuz deneme isteği dahi aksın
+      // ZeroGame backend'e (Fastify, 3001) skorsuz deneme isteği dahi aksın
       '/api': 'http://localhost:3001',
     },
   },

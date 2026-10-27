@@ -11,7 +11,7 @@ export interface ServerOptions {
   dbPath?: string
   /** Games kök dizini (GAMES_DIR) */
   gamesDir?: string
-  /** Piksel site derlemesi (SITE_DIST); boşsa statik mount atlanır */
+  /** ZeroGame site derlemesi (SITE_DIST); boşsa statik mount atlanır */
   siteDist?: string
   logger?: boolean
 }

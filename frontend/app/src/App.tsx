@@ -10,12 +10,12 @@ import './App.css'
 
 function Logo() {
   return (
-    <a className="brand" href="#top" aria-label="Piksel ana sayfa">
+    <a className="brand" href="#top" aria-label="ZeroGame ana sayfa">
       <svg viewBox="0 0 38 38" aria-hidden="true">
         <path d="M3 3h14v14H3zM21 3h14v14H21zM3 21h14v14H3z" fill="currentColor" />
         <path d="M21 21h14v14H21z" fill="currentColor" opacity=".35" />
       </svg>
-      <span>piksel<span className="brand-dot">.</span></span>
+      <span>zerogame<span className="brand-dot">.</span></span>
     </a>
   )
 }
@@ -75,7 +75,7 @@ export default function App() {
   const [mobileMenu, setMobileMenu] = useState(false)
   const searchRef = useRef<HTMLInputElement>(null)
   const [favorites, setFavorites] = useState<string[]>(() => {
-    try { return JSON.parse(localStorage.getItem('piksel-favorites') || '[]') } catch { return [] }
+    try { return JSON.parse(localStorage.getItem('zerogame-favorites') || '[]') } catch { return [] }
   })
 
   const loadCatalog = (signal?: AbortSignal) => {
@@ -91,7 +91,7 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('piksel-favorites', JSON.stringify(favorites))
+    localStorage.setItem('zerogame-favorites', JSON.stringify(favorites))
   }, [favorites])
 
   useEffect(() => {
@@ -313,7 +313,7 @@ export default function App() {
       <footer className="site-footer">
         <div className="footer-main"><Logo /><p>Küçük oyunlar. Büyük molalar.</p></div>
         <nav aria-label="Alt menü"><a href="#kesfet">Tüm oyunlar</a><button onClick={showNew}>Yeni eklenenler</button><button onClick={showFavorites}>Favoriler</button></nav>
-        <div className="footer-bottom"><span>© 2026 Piksel</span><span>Tarayıcıda oyna, keyfine bak.</span></div>
+        <div className="footer-bottom"><span>© 2026 ZeroGame</span><span>Tarayıcıda oyna, keyfine bak.</span></div>
       </footer>
 
       <Dialog.Root open={Boolean(selectedGame)} onOpenChange={(open) => { if (!open) setSelectedGame(null) }}>

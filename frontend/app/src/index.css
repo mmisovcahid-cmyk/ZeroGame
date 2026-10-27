@@ -47,7 +47,6 @@
 
 @layer base {
   * { border-color: transparent; }
-  html { background: #F5F0FF; }
   body {
     margin: 0;
     font-family: 'Manrope', sans-serif;
