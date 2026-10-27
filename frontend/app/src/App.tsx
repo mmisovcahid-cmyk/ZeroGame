@@ -67,7 +67,9 @@ export default function App() {
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState('Tümü')
   const [sort, setSort] = useState<SortMode>(DEFAULT_SORT)
-  const [visibleCount, setVisibleCount] = useState(6)
+  // Filtre değişince görülen kart sayısını resetle — effect yerine render-sırası ayarlaması
+  // (React dokümanı "Adjusting state when props change" pattern'i)
+  const [visible, setVisible] = useState({ filtersKey: '', count: 6 })
   const [favoriteOnly, setFavoriteOnly] = useState(false)
   const [selectedGame, setSelectedGame] = useState<Game | null>(null)
   const [mobileMenu, setMobileMenu] = useState(false)
@@ -77,7 +79,6 @@ export default function App() {
   })
 
   const loadCatalog = (signal?: AbortSignal) => {
-    setLoadError(null)
     fetchGames(signal)
       .then((list) => setGames(list))
       .catch((err) => { if (!signal?.aborted) setLoadError(err instanceof Error ? err.message : 'Bilinmeyen hata') })
@@ -122,7 +123,11 @@ export default function App() {
     })
   }, [games, query, activeCategory, favoriteOnly, favorites, sort])
 
-  useEffect(() => { setVisibleCount(6) }, [query, activeCategory, favoriteOnly, sort])
+  const filtersKey = `${query}|${activeCategory}|${favoriteOnly}|${sort}`
+  if (visible.filtersKey !== filtersKey) {
+    setVisible({ filtersKey, count: 6 })
+  }
+  const visibleCount = visible.count
 
   const scrollToGames = () => document.getElementById('kesfet')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
   const openGame = (game: Game) => { setSelectedGame(game) }
@@ -267,7 +272,7 @@ export default function App() {
               <Gamepad2 size={46} />
               <h3>Katalog yüklenemedi.</h3>
               <p>{loadError}</p>
-              <button className="secondary-button" onClick={() => loadCatalog()}>Tekrar dene</button>
+              <button className="secondary-button" onClick={() => { setLoadError(null); loadCatalog() }}>Tekrar dene</button>
             </div>
           ) : games === null ? (
             <div className="catalog-loading"><span className="pulse-dot" /><span className="pulse-dot" /><span className="pulse-dot" /><span className="sr-only">Oyun kataloğu yükleniyor</span></div>
@@ -279,7 +284,7 @@ export default function App() {
                 ))}
               </div>
               {visibleCount < filteredGames.length && (
-                <div className="load-more-wrap"><button className="secondary-button" onClick={() => setVisibleCount((count) => count + 6)}>Daha fazla oyun göster <ArrowRight size={18} /></button></div>
+                <div className="load-more-wrap"><button className="secondary-button" onClick={() => setVisible((state) => ({ ...state, count: state.count + 6 }))}>Daha fazla oyun göster <ArrowRight size={18} /></button></div>
               )}
             </>
           ) : catalogEmpty ? (
